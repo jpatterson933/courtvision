@@ -6,11 +6,11 @@ WORKDIR /app
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 # Copy dependency file and install
-COPY pyproject.toml .
-RUN uv pip install --system -e ".[dev]"
+COPY server/pyproject.toml server/pyproject.toml
+RUN uv pip install --system -e "./server[dev]"
 
-# Copy source
-COPY . ./server/
+# Copy full project (server needs to be importable as a package)
+COPY server/ server/
 
 EXPOSE 8000
 
