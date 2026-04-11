@@ -1,22 +1,24 @@
 # CourtVision: Multi-Phase Implementation Plan
 
 ## Progress
-| Phase | Status | Date |
-|-------|--------|------|
-| 1. Scaffolding | In Progress | 2026-04-10 |
-| 2. Schema + Connectors | Pending | |
-| 3. Player Genome | Pending | |
-| 4. Market Inefficiency | Pending | |
-| 5. Lineup Laboratory | Pending | |
-| 6. Trade & Draft | Pending | |
-| 7. Real-Time Pipeline | Pending | |
-| 8. Testing + Observability | Pending | |
-| 9. Deployment | Pending | |
-| 10. Polish | Pending | |
 
-> **New chat thread?** Read this file first, then say: *"Read docs/PLAN.md for full project context, then continue with Phase N."*
+| Phase                      | Status      | Date       |
+| -------------------------- | ----------- | ---------- |
+| 1. Scaffolding             | In Progress | 2026-04-10 |
+| 2. Schema + Connectors     | Pending     |            |
+| 3. Player Genome           | Pending     |            |
+| 4. Market Inefficiency     | Pending     |            |
+| 5. Lineup Laboratory       | Pending     |            |
+| 6. Trade & Draft           | Pending     |            |
+| 7. Real-Time Pipeline      | Pending     |            |
+| 8. Testing + Observability | Pending     |            |
+| 9. Deployment              | Pending     |            |
+| 10. Polish                 | Pending     |            |
+
+> **New chat thread?** Read this file first, then say: _"Read docs/PLAN.md for full project context, then continue with Phase N."_
 
 ## Context
+
 Building a full-stack NBA analytics platform from an empty repo. Four core modules (Player Genome, Market Inefficiency Dashboard, Lineup Laboratory, Trade & Draft Simulator) powered by 7 premium data sources, ML models, and rich D3 visualizations. Hobbyist project with unlimited budget.
 
 ---
@@ -81,11 +83,12 @@ Monorepo with clear service separation. The repo root is the project root (`/` =
 ```
 
 **Notes on structure:**
+
 - `client/` = Next.js frontend. Page routing is automatic via App Router folder structure.
 - `server/` = Python FastAPI backend. Handles all DB calls, Redis, external API calls, ML model inference.
 - `docs/PLAN.md` = This plan, committed to the repo so new chat threads can read it for context.
 - Infrastructure files (`docker-compose.yml`, `.env.example`, CI workflows) live at root.
-- **Alembic** is a database *migration tool* (not a database). It tracks schema changes over time. PostgreSQL is the database. SQLAlchemy is the ORM. Alembic manages the migration files in `server/db/migrations/`.
+- **Alembic** is a database _migration tool_ (not a database). It tracks schema changes over time. PostgreSQL is the database. SQLAlchemy is the ORM. Alembic manages the migration files in `server/db/migrations/`.
 
 ---
 
@@ -94,6 +97,7 @@ Monorepo with clear service separation. The repo root is the project root (`/` =
 **Goal:** Get from empty repo to a running local stack -- health-check API endpoint, frontend shell rendering, Postgres + Redis connected. Also commit this plan to the repo as the source of truth for future chat threads.
 
 **Deliverables:**
+
 - **`docs/PLAN.md`** committed to repo (this plan) — the single source of truth across chat threads
 - FastAPI backend with health-check endpoint
 - Next.js frontend with sidebar navigation shell
@@ -102,11 +106,13 @@ Monorepo with clear service separation. The repo root is the project root (`/` =
 
 **Step 0 — Document the plan:**
 Before writing any code, commit `docs/PLAN.md` (this plan) to the repo. This file is what future chat threads will read to understand the project state. As each phase completes, update `docs/PLAN.md` with:
+
 - A `## Progress` section at the top tracking completed phases with dates
 - Any deviations from the original plan noted inline
-- When starting a new chat thread, tell Claude: *"Read docs/PLAN.md for full project context, then continue with Phase N."*
+- When starting a new chat thread, tell Claude: _"Read docs/PLAN.md for full project context, then continue with Phase N."_
 
 **Key files:**
+
 ```
 # Root
 docs/PLAN.md                        # This plan — read this first in new threads
@@ -143,6 +149,7 @@ client/src/lib/api.ts                      # Fetch wrapper pointing to server
 ```
 
 **Details:**
+
 - Docker Compose: 4 services (postgres:16, redis:7, server, client). Hot-reload via mounted source volumes. Named volumes for Postgres persistence.
 - Server: FastAPI with async lifespan for DB/Redis pool init, CORS middleware for frontend origin
 - Client: Next.js App Router, Tailwind CSS, shadcn/ui components
@@ -157,6 +164,7 @@ client/src/lib/api.ts                      # Fetch wrapper pointing to server
 **Goal:** Define the full data warehouse schema and build connectors to all 7 data sources with rate limiting, retry, and error handling.
 
 **Deliverables:**
+
 - Complete PostgreSQL schema (players, teams, games, plays, tracking, shots, contracts, lineups, synergy, draft)
 - `BaseConnector` ABC with retry/rate-limit pattern
 - 7 connector implementations (Sportradar, Second Spectrum, Cleaning the Glass, PBP Stats, Spotrac, Synergy, Stats Perform)
@@ -165,6 +173,7 @@ client/src/lib/api.ts                      # Fetch wrapper pointing to server
 - Ingestion status API endpoint
 
 **Key files:**
+
 ```
 # Database models
 server/db/models/__init__.py
@@ -209,6 +218,7 @@ server/tests/test_ingestion/fixtures/   # Sample API response JSON
 ```
 
 **Critical schema tables:**
+
 - `players`: sportradar_id, second_spectrum_id, name, position, draft info
 - `games`: season, game_date, teams, scores (indexed on season+date)
 - `plays`: possession-level, partitioned by season
@@ -219,6 +229,7 @@ server/tests/test_ingestion/fixtures/   # Sample API response JSON
 - `synergy_playtypes`: play type breakdowns with PPP and percentiles
 
 **BaseConnector pattern:**
+
 ```python
 class BaseConnector(ABC):
     # httpx.AsyncClient, AsyncLimiter for rate limiting, tenacity retry
@@ -234,6 +245,7 @@ class BaseConnector(ABC):
 **Goal:** Build the feature engineering pipeline transforming raw data into multi-dimensional Player Genomes. This is the intellectual core -- everything else depends on it.
 
 **Deliverables:**
+
 - Feature computation modules: shooting, defense, gravity, transition, fatigue, clutch, screening, playmaking, rebounding
 - PyTorch spatial model for tracking-data-derived gravity metrics
 - `player_genomes` table (key metrics as columns + JSONB `raw_features`)
@@ -243,6 +255,7 @@ class BaseConnector(ABC):
 - Redis caching for expensive genome computations
 
 **Key files:**
+
 ```
 # Server - feature engineering
 server/modules/player_genome/__init__.py
@@ -276,6 +289,7 @@ client/src/hooks/use-genome.ts
 ```
 
 **Feature computation highlights:**
+
 - **shooting.py**: Zone eFG%, shot quality differential, pull-up vs C&S, self-created ratio, shot distribution entropy
 - **gravity.py**: PyTorch attention model on tracking sequences predicting defensive displacement attributable to focal player
 - **defense.py**: Versatility (distinct play types defended), contest rate, recovery speed, quality-of-opponent weighting
@@ -298,6 +312,7 @@ client/src/hooks/use-genome.ts
 **Can be worked in parallel with Phase 5 after Phase 3 completes.**
 
 **Key files:**
+
 ```
 # Server
 server/modules/market_inefficiency/war_model.py         # XGBoost WAR estimation
@@ -322,6 +337,7 @@ client/src/hooks/use-market.ts
 ```
 
 **Deliverables:**
+
 - XGBoost WAR model (target: team wins added from RAPM/on-off; features: genome dimensions + minutes + usage)
 - GMM player archetype clustering (12-15 archetypes from genome vectors)
 - Aging curves by archetype (delta method + LOESS smoothing)
@@ -340,6 +356,7 @@ client/src/hooks/use-market.ts
 **Can be worked in parallel with Phase 4 after Phase 3 completes.**
 
 **Key files:**
+
 ```
 # Server
 server/modules/lineup_lab/lineup_model.py          # Net rating prediction
@@ -366,6 +383,7 @@ client/src/hooks/use-lineups.ts
 ```
 
 **Deliverables:**
+
 - Lineup net rating prediction model (ridge regression on concatenated genome vectors + interaction features)
 - Spatial fit scoring (shot chart overlap penalty, gravity coverage reward, entropy measure)
 - PuLP rotation optimizer (binary variables: player on/off per minute, constraints: exactly 5 on court, minutes limits, rest periods, stagger requirements)
@@ -384,6 +402,7 @@ client/src/hooks/use-lineups.ts
 **Depends on Phases 4 AND 5.**
 
 **Key files:**
+
 ```
 # Server
 server/modules/trade_draft/cap_engine.py           # CBA salary cap rules
@@ -417,6 +436,7 @@ client/src/hooks/use-draft.ts
 ```
 
 **Deliverables:**
+
 - CBA cap engine (salary matching rules, aprons, trade exceptions, Bird rights, Stepien Rule)
 - Trade evaluator (3-year projected win delta using aging curves)
 - Knapsack trade optimizer (PuLP CBC solver with time limit)
@@ -436,6 +456,7 @@ client/src/hooks/use-draft.ts
 **Can start after Phase 3.**
 
 **Key files:**
+
 ```
 # Server
 server/realtime/game_feed.py            # WebSocket consumer for Sportradar live
@@ -454,6 +475,7 @@ client/src/components/live/live-game-feed.tsx
 ```
 
 **Deliverables:**
+
 - WebSocket consumer for Sportradar live feed
 - Incremental genome update after each game (weighted rolling average; full recompute nightly)
 - Redis caching strategy with `@cached` decorator (key patterns, TTLs, invalidation on new data)
@@ -470,6 +492,7 @@ client/src/components/live/live-game-feed.tsx
 **Goal:** Harden the system. >80% test coverage, structured logging, error tracking, comprehensive docs.
 
 **Key files:**
+
 ```
 # Server
 server/tests/integration/test_genome_pipeline_e2e.py
@@ -491,6 +514,7 @@ docs/runbooks/retraining-models.md
 ```
 
 **Deliverables:**
+
 - Integration tests for each module (end-to-end: ingest -> compute -> API)
 - `structlog` JSON logging with correlation IDs
 - Sentry error tracking + alerts (>5 errors/min, any 5xx)
@@ -507,6 +531,7 @@ docs/runbooks/retraining-models.md
 **Goal:** Deploy to Railway with automated CI/CD.
 
 **Key files:**
+
 ```
 # Root (infra lives at root level)
 railway.toml
@@ -520,6 +545,7 @@ scripts/health_check.py
 ```
 
 **Deliverables:**
+
 - Railway config (4 services: server, app, managed Postgres, Redis)
 - Multi-stage Dockerfiles for production
 - GitHub Actions deploy on merge to main
@@ -535,6 +561,7 @@ scripts/health_check.py
 **Goal:** Make it great. Performance tuning, UI polish, delightful extras.
 
 **Key files:**
+
 ```
 server/db/materialized_views.py         # Common query pre-aggregation
 client/src/components/ui/theme-toggle.tsx   # Dark/light mode
@@ -546,6 +573,7 @@ client/src/components/viz/season-compare.tsx
 ```
 
 **Deliverables:**
+
 - Materialized views for common queries (`mv_player_season_summary`, `mv_team_lineup_stats`)
 - Additional indexes from `EXPLAIN ANALYZE`
 - Dark mode
