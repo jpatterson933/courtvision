@@ -1,4 +1,6 @@
-FROM python:3.12-slim
+FROM python:3.12.15-slim-trixie
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/* \
+ && dpkg --compare-versions "$(dpkg-query -W -f='${Version}' ca-certificates)" ge 20250419+deb13u1  # eMudhra CA fix, fail build if unpatched
 
 WORKDIR /app
 
