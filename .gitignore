@@ -42,3 +42,8 @@ htmlcov/
 *.joblib
 *.pt
 *.pth
+
+# Imported data and local reports
+data/
+.ruff_cache/
+*.tsbuildinfo

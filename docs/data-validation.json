@@ -1,0 +1,499 @@
+{
+  "imported_games": 85,
+  "imports": [
+    {
+      "id": "espn:2026:2",
+      "season": 2026,
+      "season_type_id": 2,
+      "expected_ids": [
+        "401809244",
+        "401809951",
+        "401809968",
+        "401809977",
+        "401809991",
+        "401809506",
+        "401810010",
+        "401810018",
+        "401810034",
+        "401810040",
+        "401810053",
+        "401810077",
+        "401809787",
+        "401810086",
+        "401810108",
+        "401810137",
+        "401809801",
+        "401809820",
+        "401810163",
+        "401810172",
+        "401810191",
+        "401810193",
+        "401810217",
+        "401809836",
+        "401839699",
+        "401810234",
+        "401810250",
+        "401810273",
+        "401809241",
+        "401810301",
+        "401810315",
+        "401810340",
+        "401810356",
+        "401810369",
+        "401810378",
+        "401810396",
+        "401810417",
+        "401810424",
+        "401810441",
+        "401810456",
+        "401810462",
+        "401810472",
+        "401810488",
+        "401810503",
+        "401810516",
+        "401810526",
+        "401810543",
+        "401810563",
+        "401810574",
+        "401810595",
+        "401810608",
+        "401810624",
+        "401810629",
+        "401810646",
+        "401810664",
+        "401810678",
+        "401810695",
+        "401810710",
+        "401810721",
+        "401810733",
+        "401810746",
+        "401810761",
+        "401810769",
+        "401810777",
+        "401810801",
+        "401810815",
+        "401810829",
+        "401810844",
+        "401810862",
+        "401810865",
+        "401810879",
+        "401810893",
+        "401810907",
+        "401810930",
+        "401810953",
+        "401810958",
+        "401810971",
+        "401810995",
+        "401811010",
+        "401811025",
+        "401811040",
+        "401811053"
+      ],
+      "expected": 82,
+      "started_at": "2026-10-13T07:19:02.592099+00:00",
+      "last_success": "2026-10-13T07:19:04.348826+00:00",
+      "failures": [],
+      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/lal/schedule?season=2026&seasontype=2",
+      "status": "complete",
+      "imported_this_run": 2
+    },
+    {
+      "id": "espn:2027:1",
+      "season": 2027,
+      "season_type_id": 1,
+      "expected_ids": [
+        "401898716",
+        "401898390",
+        "401898717"
+      ],
+      "expected": 3,
+      "started_at": "2026-10-13T14:57:07.405797+00:00",
+      "last_success": "2026-10-13T14:57:10.114758+00:00",
+      "failures": [],
+      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/lal/schedule?season=2027&seasontype=1",
+      "status": "complete",
+      "missing_ids": [],
+      "finished_at": "2026-10-13T14:57:10.114758+00:00",
+      "imported_this_run": 3
+    },
+    {
+      "id": "espn:2027:2",
+      "season": 2027,
+      "season_type_id": 2,
+      "expected_ids": [],
+      "expected": 0,
+      "started_at": "2026-10-13T14:57:10.302355+00:00",
+      "last_success": "2026-10-13T14:57:10.426431+00:00",
+      "failures": [],
+      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/lal/schedule?season=2027&seasontype=2",
+      "status": "complete",
+      "missing_ids": [],
+      "finished_at": "2026-10-13T14:57:10.426431+00:00",
+      "imported_this_run": 0
+    }
+  ],
+  "seasons": [
+    {
+      "season": 2026,
+      "type": "Regular season",
+      "games": 82,
+      "validated": 61,
+      "partial": 21,
+      "wins": 53,
+      "lakers_points": 9540,
+      "opponent_points": 9396,
+      "lineup_coverage_percent": 98.17,
+      "final_scores_reconciled": 82,
+      "computed_summary": {
+        "points": 9540,
+        "fgm": 3448,
+        "fga": 6913,
+        "three_made": 970,
+        "three_attempts": 2751,
+        "ftm": 1674,
+        "fta": 2194,
+        "oreb": 774.0,
+        "dreb": 2587.0,
+        "rebounds": 3361.0,
+        "turnovers": 1188.0,
+        "assists": 2122.0,
+        "possessions": 8157,
+        "defensive_possessions": 8140,
+        "off_rating": 116.955,
+        "def_rating": 115.43,
+        "net_rating": 1.525,
+        "efg": 56.893,
+        "ts": 60.546,
+        "three_pct": 35.26,
+        "three_rate": 39.795,
+        "turnover_rate": 14.564,
+        "oreb_pct": 23.882,
+        "ft_rate": 31.737
+      }
+    },
+    {
+      "season": 2027,
+      "type": "Preseason",
+      "games": 3,
+      "validated": 2,
+      "partial": 1,
+      "wins": 2,
+      "lakers_points": 339,
+      "opponent_points": 337,
+      "lineup_coverage_percent": 100.0,
+      "final_scores_reconciled": 2,
+      "computed_summary": {
+        "points": 339,
+        "fgm": 110,
+        "fga": 244,
+        "three_made": 44,
+        "three_attempts": 115,
+        "ftm": 75,
+        "fta": 94,
+        "oreb": 29.0,
+        "dreb": 84.0,
+        "rebounds": 113.0,
+        "turnovers": 71.0,
+        "assists": 76.0,
+        "possessions": 320,
+        "defensive_possessions": 322,
+        "off_rating": 105.938,
+        "def_rating": 104.658,
+        "net_rating": 1.28,
+        "efg": 54.098,
+        "ts": 59.399,
+        "three_pct": 38.261,
+        "three_rate": 47.131,
+        "turnover_rate": 22.188,
+        "oreb_pct": 23.967,
+        "ft_rate": 38.525
+      }
+    }
+  ],
+  "partial_games": [
+    {
+      "id": "401809951",
+      "date": "2025-10-24",
+      "opponent": "Minnesota Timberwolves",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Julius Randle assists: events 5, box score 6.",
+        "Naz Reid assists: events 3, box score 2."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401809968",
+      "date": "2025-10-26",
+      "opponent": "Sacramento Kings",
+      "lineup_coverage": 75.0,
+      "issues": [
+        "Period 2: event 401809968287 contradicts the lineup.",
+        "Period 2: event 401809968288 contradicts the lineup."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401809506",
+      "date": "2025-10-31",
+      "opponent": "Memphis Grizzlies",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Santi Aldama assists: events 3, box score 4.",
+        "Vince Williams Jr. assists: events 3, box score 2."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810010",
+      "date": "2025-11-02",
+      "opponent": "Miami Heat",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Possession boundary inferred before event 401810010341."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810034",
+      "date": "2025-11-05",
+      "opponent": "San Antonio Spurs",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Keldon Johnson oreb: events 1, box score 0."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810040",
+      "date": "2025-11-08",
+      "opponent": "Atlanta Hawks",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Jacob Toppin oreb: events 1, box score 0.",
+        "Vit Krejci fga: events 14, box score 13."
+      ],
+      "failed_checks": [
+        {
+          "name": "ATL fga (including team heaves)",
+          "actual": 94,
+          "expected": 93,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "401810053",
+      "date": "2025-11-10",
+      "opponent": "Charlotte Hornets",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Rui Hachimura assists: events 1, box score 2.",
+        "Marcus Smart assists: events 6, box score 5."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401809787",
+      "date": "2025-11-14",
+      "opponent": "New Orleans Pelicans",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Herbert Jones dreb: events 4, box score 3.",
+        "Trey Murphy III dreb: events 4, box score 5."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810086",
+      "date": "2025-11-15",
+      "opponent": "Milwaukee Bucks",
+      "lineup_coverage": 75.0,
+      "issues": [
+        "Period 1: event 401810086216 contradicts the lineup."
+      ],
+      "failed_checks": [
+        {
+          "name": "Period 2 team 13 score",
+          "actual": 65,
+          "expected": 63,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "401810108",
+      "date": "2025-11-18",
+      "opponent": "Utah Jazz",
+      "lineup_coverage": 75.0,
+      "issues": [
+        "Period 4: event 401810108743 contradicts the lineup."
+      ],
+      "failed_checks": [
+        {
+          "name": "Period 4 team 26 score",
+          "actual": 126,
+          "expected": 124,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "401810191",
+      "date": "2025-12-04",
+      "opponent": "Toronto Raptors",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Scottie Barnes turnovers: events 2, box score 1.",
+        "Immanuel Quickley turnovers: events 4, box score 5."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810193",
+      "date": "2025-12-05",
+      "opponent": "Boston Celtics",
+      "lineup_coverage": 75.0,
+      "issues": [
+        "Period 3: event 401810193432 contradicts the lineup."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810217",
+      "date": "2025-12-07",
+      "opponent": "Philadelphia 76ers",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Tyrese Maxey turnovers: events 3, box score 4."
+      ],
+      "failed_checks": [
+        {
+          "name": "PHI turnovers (including team heaves)",
+          "actual": 5,
+          "expected": 6.0,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "401810234",
+      "date": "2025-12-18",
+      "opponent": "Utah Jazz",
+      "lineup_coverage": 100.0,
+      "issues": [],
+      "failed_checks": [
+        {
+          "name": "Period 4 team 13 score",
+          "actual": 143,
+          "expected": 141,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "401810369",
+      "date": "2026-01-06",
+      "opponent": "New Orleans Pelicans",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Herbert Jones oreb: events 1, box score 2.",
+        "Yves Missi oreb: events 5, box score 4."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810417",
+      "date": "2026-01-12",
+      "opponent": "Sacramento Kings",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Possession boundary inferred before event 401810417294."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810516",
+      "date": "2026-01-26",
+      "opponent": "Chicago Bulls",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Jake LaRavia assists: events 4, box score 3.",
+        "Luka Doncic assists: events 11, box score 12."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810526",
+      "date": "2026-01-28",
+      "opponent": "Cleveland Cavaliers",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Donovan Mitchell assists: events 4, box score 5."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810646",
+      "date": "2026-02-12",
+      "opponent": "Dallas Mavericks",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "Possession boundary inferred before event 401810646243."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810710",
+      "date": "2026-02-26",
+      "opponent": "Phoenix Suns",
+      "lineup_coverage": 75.0,
+      "issues": [
+        "Period 1: event 401810710189 contradicts the lineup.",
+        "Possession boundary inferred before event 401810710248."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401810733",
+      "date": "2026-03-01",
+      "opponent": "Sacramento Kings",
+      "lineup_coverage": 75.0,
+      "issues": [
+        "Period 4: event 401810733635 contradicts the lineup."
+      ],
+      "failed_checks": []
+    },
+    {
+      "id": "401898716",
+      "date": "2026-10-05",
+      "opponent": "Sacramento Kings",
+      "lineup_coverage": 100.0,
+      "issues": [
+        "De'Andre Hunter points: events 0, box score 3.",
+        "De'Andre Hunter ftm: events 0, box score 3.",
+        "De'Andre Hunter fta: events 0, box score 3."
+      ],
+      "failed_checks": [
+        {
+          "name": "SAC final score",
+          "actual": 100,
+          "expected": 103,
+          "passed": false
+        },
+        {
+          "name": "SAC ftm (including team heaves)",
+          "actual": 22,
+          "expected": 25,
+          "passed": false
+        },
+        {
+          "name": "SAC fta (including team heaves)",
+          "actual": 31,
+          "expected": 34,
+          "passed": false
+        }
+      ]
+    }
+  ]
+}
