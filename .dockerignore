@@ -1,0 +1,6 @@
+.git
+.venv
+client/node_modules
+client/.next
+data
+.env
